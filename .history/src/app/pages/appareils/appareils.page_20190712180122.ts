@@ -26,6 +26,7 @@ export class AppareilsPage {
         {
             name: 'Ordinateur',
             description: [
+
                 'Marque: fait maison',
                 'Consommation: 500 kWh/an'
               ]

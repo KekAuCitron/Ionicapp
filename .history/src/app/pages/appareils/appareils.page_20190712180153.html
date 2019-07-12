@@ -7,6 +7,6 @@
   
 <ion-content padding>
     <ion-list>
-        <ion-button *ngFor="let appareil of appareilsList"  [routerLink]="['/single-appareil/', appareil]">{{appareil.name}}</ion-button>
+        <ion-button *ngFor="let appareil of appareilsList"  [routerLink]="['/single-appareil/', {{appareil}}]">{{appareil.name}}</ion-button>
     </ion-list>
 </ion-content>

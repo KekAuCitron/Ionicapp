@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Appareils</ion-title>
+    </ion-toolbar>
+</ion-header>
+  
+  
+<ion-content padding>
+    <ion-button *ngFor="let appareil of appareilsList"  [routerLink]="['/single-appareil/', appareil.name]">{{appareil.name}}</ion-button>
+</ion-content>
+  
+  
+<ion-footer padding>
+    <p>Bas de page</p>
+</ion-footer>

@@ -17,18 +17,10 @@ export class AppareilsPage {
               ]
         },
         {
-            name: 'Télévision',
-            description: [
-                'Dimensions: 40 pouces',
-                'Consommation: 22 kWh/an'
-              ]
+            name: 'Télévision'
         },
         {
-            name: 'Ordinateur',
-            description: [
-                'Marque: fait maison',
-                'Consommation: 500 kWh/an'
-              ]
+            name: 'Ordinateur'
         }
     ];
 
