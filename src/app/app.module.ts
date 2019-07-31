@@ -9,14 +9,17 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { SingleAppareilPageModule } from './pages/appareils/single-appareil/single-appareil.module';
+import { AppareilsService } from './services/appareils.service';
+ 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CommonModule, SingleAppareilPageModule],
   providers: [
     StatusBar,
     SplashScreen,
+    AppareilsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

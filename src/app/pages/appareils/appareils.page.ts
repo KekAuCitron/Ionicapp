@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+
+import { DataService } from '../../services/data.service';
+import { SingleAppareilPage } from './single-appareil/single-appareil.page';
+import { Appareil } from '../../models/Appareil';
+import { AppareilsService } from '../../services/appareils.service';
 
 @Component({
   selector: 'app-appareils',
@@ -7,31 +14,26 @@ import { Component } from '@angular/core';
 })
 export class AppareilsPage {
 
-    appareilsList = [
-        {
-            name: 'Machine à laver',
-            description: [
-                'Volume: 6 litres',
-                'Temps de lavage: 2 heures',
-                'Consommation: 173 kWh/an'
-              ]
-        },
-        {
-            name: 'Télévision',
-            description: [
-                'Dimensions: 40 pouces',
-                'Consommation: 22 kWh/an'
-              ]
-        },
-        {
-            name: 'Ordinateur',
-            description: [
-                'Marque: fait maison',
-                'Consommation: 500 kWh/an'
-              ]
-        }
-    ];
+  appareilsList: Appareil[];
 
-  constructor() {}
+  constructor(private router: Router, private dataService: DataService, private modalController: ModalController, private appareilsService: AppareilsService) {}
+
+  /*
+  openAppareilWithService(appareil) {
+    this.dataService.setData(appareil.name, appareil)
+    this.router.navigateByUrl('/single-appareil/'+appareil.name);
+  }*/
+
+  ionViewWillEnter() {
+    this.appareilsList = this.appareilsService.appareilsList;
+  }
+
+  async presentModal(index: number) {
+    const modal = await this.modalController.create({
+      component: SingleAppareilPage,
+      componentProps: {'index': index}
+    });
+    return await modal.present();
+  }
 
 }

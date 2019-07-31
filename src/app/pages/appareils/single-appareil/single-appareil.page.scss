@@ -1,0 +1,11 @@
+.is-on {
+    ion-card-content, ion-card-header, ion-grid {
+        background-color: var(--secondary-light);
+    }
+}
+
+.is-off {
+    ion-card-content, ion-card-header, ion-grid {
+        background-color: var(--danger-light);
+    }
+}

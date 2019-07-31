@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavParams } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { modalController } from '@ionic/core';
+
+import { Appareil } from '../../../models/Appareil';
+import { AppareilsService } from '../../../services/appareils.service';
+
 
 @Component({
   selector: 'app-single-appareil',
@@ -8,12 +15,31 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SingleAppareilPage implements OnInit {
 
-  name = null;
+  @Input() index: number;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  appareil: Appareil;
+
+  constructor(private route: ActivatedRoute, private router: Router, public navParams: NavParams, modalCtrl: ModalController, public appareilsService: AppareilsService) { }
 
   ngOnInit() {
-    this.name = this.activatedRoute.snapshot.paramMap.get('name');
+    /*
+    if(this.route.snapshot.data['appareil']) {
+      this.appareil = this.route.snapshot.data['appareil']
+    } else {
+      this.appareil.name = 'Vide';
+      this.appareil.description = ['Vide'];
+    }*/
+
+    this.index = this.navParams.get('index');
+    this.appareil = this.appareilsService.appareilsList[this.index];
+  }
+
+  dismissModal() {
+    modalController.dismiss();
+  }
+
+  onToggleAppareil() {
+    this.appareil.isOn = !this.appareil.isOn;
   }
 
 }
